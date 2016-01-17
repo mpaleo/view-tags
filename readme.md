@@ -1,28 +1,34 @@
 # Laravel view tags
 ## Installation
+
 1. Add the package to your composer.json
     ```json
     ...
     "mpaleo/view-tags": "dev-master",
     ...
     ```
+    
 2. Update
     ```bash
     composer update
     ```
+    
 3. Add the service provider to the providers array in `{laravel-root}\config\app.php`
     ```php
     ...
     ViewTags\ViewTagsServiceProvider::class,
     ...
     ```
+    
 4. Add the alias in `{laravel-root}\config\app.php`
     ```php
     ...
     'ViewTags' => ViewTags\ViewTags::class,
     ...
     ```
+    
 ## Usage
+
 ### Tag views
 ```php
 ViewTags::tag('viewOne', 'someTag');
