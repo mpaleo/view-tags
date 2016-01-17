@@ -1,0 +1,24 @@
+{
+    "name": "mpaleo/view-tags",
+    "description": "Simple way to tag your Laravel views",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "view",
+        "tags"
+    ],
+    "authors": [
+        {
+            "name": "Michael Paleo",
+            "email": "github@michaelpaleo.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "ViewTags\\": "src/ViewTags/"
+        }
+    }
+}
