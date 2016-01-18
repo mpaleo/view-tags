@@ -1,4 +1,6 @@
-# Laravel view tags
+# Laravel view tags 
+[![Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+
 ## Installation
 
 1. Add the package to your composer.json
