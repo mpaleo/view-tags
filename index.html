@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>View tags for Laravel by mpaleo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">View tags for Laravel</h1>
+      <h2 class="project-tagline">Simple way to tag your Laravel views</h2>
+      <a href="https://github.com/mpaleo/view-tags" class="btn">View on GitHub</a>
+      <a href="https://github.com/mpaleo/view-tags/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/mpaleo/view-tags/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<ol>
+<li>
+<p>Add the package to your composer.json</p>
+
+<div class="highlight highlight-source-json"><pre>...
+<span class="pl-s"><span class="pl-pds">"</span>mpaleo/view-tags<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>dev-master<span class="pl-pds">"</span></span>,
+...</pre></div>
+</li>
+<li>
+<p>Update</p>
+
+<div class="highlight highlight-source-shell"><pre>composer update</pre></div>
+</li>
+<li>
+<p>Add the service provider to the providers array in <code>{laravel-root}\config\app.php</code></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">...</span></span>
+<span class="pl-s1"><span class="pl-c1">ViewTags\</span><span class="pl-c1">ViewTagsServiceProvider</span><span class="pl-k">::</span><span class="pl-c1">class</span>,</span>
+<span class="pl-s1"><span class="pl-k">...</span></span></pre></div>
+</li>
+<li>
+<p>Add the alias in <code>{laravel-root}\config\app.php</code></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">...</span></span>
+<span class="pl-s1"><span class="pl-s"><span class="pl-pds">'</span>ViewTags<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">ViewTags\</span><span class="pl-c1">ViewTags</span><span class="pl-k">::</span><span class="pl-c1">class</span>,</span>
+<span class="pl-s1"><span class="pl-k">...</span></span></pre></div>
+</li>
+</ol>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="tag-views" class="anchor" href="#tag-views" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tag views</h3>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">ViewTags</span><span class="pl-k">::</span>tag(<span class="pl-s"><span class="pl-pds">'</span>viewOne<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>someTag<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-c1">ViewTags</span><span class="pl-k">::</span>tag(<span class="pl-s"><span class="pl-pds">'</span>viewTwo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>someTag<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-c1">ViewTags</span><span class="pl-k">::</span>tag(<span class="pl-s"><span class="pl-pds">'</span>viewThree<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>someTag<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>anotherTag<span class="pl-pds">'</span></span>]);</span></pre></div>
+
+<h3>
+<a id="get-tagged-views" class="anchor" href="#get-tagged-views" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get tagged views</h3>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">ViewTags</span><span class="pl-k">::</span>taggedWith(<span class="pl-s"><span class="pl-pds">'</span>someTag<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-c">/* Output:</span></span>
+<span class="pl-s1"><span class="pl-c"> * array(3) {</span></span>
+<span class="pl-s1"><span class="pl-c"> *   [0] =&gt; "viewOne"</span></span>
+<span class="pl-s1"><span class="pl-c"> *   [1] =&gt; "viewTwo"</span></span>
+<span class="pl-s1"><span class="pl-c"> *   [2] =&gt; "viewThree"</span></span>
+<span class="pl-s1"><span class="pl-c"> * }</span></span>
+<span class="pl-s1"><span class="pl-c"> */</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">ViewTags</span><span class="pl-k">::</span>taggedWith(<span class="pl-s"><span class="pl-pds">'</span>anotherTag<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-c">/* Output:</span></span>
+<span class="pl-s1"><span class="pl-c"> * array(1) {</span></span>
+<span class="pl-s1"><span class="pl-c"> *   [0] =&gt; "viewThree"</span></span>
+<span class="pl-s1"><span class="pl-c"> * }</span></span>
+<span class="pl-s1"><span class="pl-c"> */</span></span></pre></div>
+
+<h3>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h3>
+
+<p>The view tags package is licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/mpaleo/view-tags">View tags for Laravel</a> is maintained by <a href="https://github.com/mpaleo">mpaleo</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
