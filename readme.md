@@ -6,7 +6,7 @@
 1. Add the package to your composer.json
     ```json
     ...
-    "mpaleo/view-tags": "dev-master",
+    "mpaleo/view-tags": "~1.0",
     ...
     ```
     
